@@ -23,6 +23,7 @@ public class Splash extends JFrame {
         try{
             Thread.sleep(5000);
             setVisible(false);
+            new Login();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -33,9 +34,3 @@ public class Splash extends JFrame {
         new Splash();
     }
 }
-
-
-//? To compile the code, use the following command in the terminal:
-//? javac -d . src/employee/management/system/Splash.java
-//? To run the compiled code, use the following command in the terminal:
-//? java employee.management.system.Splash
