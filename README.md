@@ -41,8 +41,6 @@ A clean and interactive **Java Swing-based GUI application** for managing employ
 |-------------------|
 | ![Add Employee](https://github.com/Tusharxhub/Employee-Management-System/blob/main/Add%20Employee%20Page.png?raw=true) |
 
-> *(Replace the image link above with a screenshot from your app once you upload it to GitHub)*
-
 ---
 
 ## 🚀 Getting Started
