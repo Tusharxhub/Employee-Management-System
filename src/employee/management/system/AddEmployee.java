@@ -165,6 +165,25 @@ public class AddEmployee extends JFrame  implements ActionListener {
         System.out.println("Back button clicked");
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == add) {
+            String name = tname.getText();
+            String fname = tfname.getText();
+            String dob = ((JTextField) tdob.getDateEditor().getUiComponent()).getText();
+            String salary = tsalary.getText();
+            String address = taddress.getText();
+            String phone = tphone.getText();
+            String email = temail.getText();
+            String education = (String) Boxeducation.getSelectedItem();
+            String designation = tdesignation.getText();
+            String aadhar = taadhar.getText();
+            String empid = tempid.getText();
+        } else if (e.getSource() == back) {
+            handleBackAction();
+        }
+    }
+
     public static void main(String[] args) {
         new AddEmployee();
     }
