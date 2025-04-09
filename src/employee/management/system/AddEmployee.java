@@ -5,7 +5,7 @@ import java.awt.*;
 import com.toedter.calendar.JDateChooser;
 import java.util.Random;
 
-public class AddEmployee extends JFrame {
+public class AddEmployee extends JFrame  implements ActionListener {
     JTextField tname, tfname, taddress, tphone, taadhar, temail, tsalary, tdesignation;
     JDateChooser tdob;
     JComboBox<String> Boxeducation;
