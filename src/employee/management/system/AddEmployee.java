@@ -9,22 +9,26 @@ import java.util.Random;
 
 public class AddEmployee extends JFrame implements ActionListener {
 
+    // Declare UI components
     JTextField tname, tfname, taddress, tphone, taadhar, temail, tsalary, tdesignation;
     JDateChooser tdob;
     JComboBox<String> Boxeducation;
     JLabel tempid;
     JButton add, back;
 
+    // Constructor to initialize the UI
     AddEmployee() {
+        // Set background color and layout
         getContentPane().setBackground(new Color(163, 255, 188));
         setLayout(null);
 
+        // Heading label
         JLabel heading = new JLabel("Add Employee Detail");
         heading.setBounds(320, 30, 300, 50);
         heading.setFont(new Font("Serif", Font.BOLD, 25));
         add(heading);
 
-        // Name
+        // Name label and text field
         JLabel name = new JLabel("Name");
         name.setBounds(50, 150, 150, 30);
         name.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -35,7 +39,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         tname.setBackground(new Color(177, 252, 197));
         add(tname);
 
-        // Father's Name
+        // Father's Name label and text field
         JLabel fname = new JLabel("Father's Name");
         fname.setBounds(400, 150, 150, 30);
         fname.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -46,7 +50,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         tfname.setBackground(new Color(177, 252, 197));
         add(tfname);
 
-        // DOB
+        // Date of Birth label and date chooser
         JLabel dob = new JLabel("Date Of Birth");
         dob.setBounds(50, 200, 150, 30);
         dob.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -57,7 +61,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         tdob.setBackground(new Color(177, 252, 197));
         add(tdob);
 
-        // Salary
+        // Salary label and text field
         JLabel salary = new JLabel("Salary");
         salary.setBounds(400, 200, 150, 30);
         salary.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -68,7 +72,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         tsalary.setBackground(new Color(177, 252, 197));
         add(tsalary);
 
-        // Address
+        // Address label and text field
         JLabel address = new JLabel("Address");
         address.setBounds(50, 250, 150, 30);
         address.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -79,7 +83,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         taddress.setBackground(new Color(177, 252, 197));
         add(taddress);
 
-        // Phone
+        // Phone label and text field
         JLabel phone = new JLabel("Phone");
         phone.setBounds(400, 250, 150, 30);
         phone.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -90,7 +94,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         tphone.setBackground(new Color(177, 252, 197));
         add(tphone);
 
-        // Email
+        // Email label and text field
         JLabel email = new JLabel("Email");
         email.setBounds(50, 300, 150, 30);
         email.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -101,7 +105,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         temail.setBackground(new Color(177, 252, 197));
         add(temail);
 
-        // Education
+        // Education label and combo box
         JLabel education = new JLabel("Highest Education");
         education.setBounds(400, 300, 200, 30);
         education.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -113,7 +117,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         Boxeducation.setBackground(new Color(177, 252, 197));
         add(Boxeducation);
 
-        // Designation
+        // Designation label and text field
         JLabel designation = new JLabel("Designation");
         designation.setBounds(50, 350, 150, 30);
         designation.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -124,7 +128,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         tdesignation.setBackground(new Color(177, 252, 197));
         add(tdesignation);
 
-        // Aadhar
+        // Aadhar label and text field
         JLabel aadhar = new JLabel("Aadhar Number");
         aadhar.setBounds(400, 350, 150, 30);
         aadhar.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -135,7 +139,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         taadhar.setBackground(new Color(177, 252, 197));
         add(taadhar);
 
-        // Employee ID
+        // Employee ID label and auto-generated ID
         JLabel empid = new JLabel("Employee ID");
         empid.setBounds(50, 400, 150, 30);
         empid.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -150,7 +154,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         tempid.setForeground(Color.RED);
         add(tempid);
 
-        // Buttons
+        // Add button
         add = new JButton("ADD");
         add.setBounds(450, 550, 150, 40);
         add.setBackground(Color.BLACK);
@@ -158,6 +162,7 @@ public class AddEmployee extends JFrame implements ActionListener {
         add.addActionListener(this);
         add(add);
 
+        // Back button
         back = new JButton("BACK");
         back.setBounds(250, 550, 150, 40);
         back.setBackground(Color.BLACK);
@@ -165,15 +170,17 @@ public class AddEmployee extends JFrame implements ActionListener {
         back.addActionListener(this);
         add(back);
 
-        // Frame
+        // Frame settings
         setSize(900, 700);
         setLocation(300, 50);
         setVisible(true);
     }
 
+    // Handle button actions
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == add) {
+            // Collect data from input fields
             String name = tname.getText();
             String fname = tfname.getText();
             String salary = tsalary.getText();
@@ -190,6 +197,7 @@ public class AddEmployee extends JFrame implements ActionListener {
             String dob = sdf.format(tdob.getDate());
 
             try {
+                // Insert data into the database
                 conn c = new conn();
                 String query = "INSERT INTO employee VALUES('" + empid + "','" + name + "','" + fname + "','" + dob + "','" + salary + "','" + address + "','" + phone + "','" + email + "','" + education + "','" + designation + "','" + aadhar + "')";
                 c.statement.executeUpdate(query);
@@ -199,13 +207,14 @@ public class AddEmployee extends JFrame implements ActionListener {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        } else 
+        } else {
+            // Handle back button action
             setVisible(false);
             new Main_class();
         }
-    
-    
+    }
 
+    // Main method to run the application
     public static void main(String[] args) {
         new AddEmployee();
     }
