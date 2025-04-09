@@ -54,7 +54,8 @@ public class Main_class extends JFrame {
         rem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Add your action logic here
+                new RemoveEmployee();
+                setVisible(false);
 
             }
         });
