@@ -199,11 +199,12 @@ public class AddEmployee extends JFrame implements ActionListener {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        } else if (e.getSource() == back) {
+        } else 
             setVisible(false);
             new Main_class();
         }
-    }
+    
+    
 
     public static void main(String[] args) {
         new AddEmployee();
