@@ -10,6 +10,7 @@ public class AddEmployee extends JFrame {
     JDateChooser tdob;
     JComboBox<String> Boxeducation;
     JLabel tempid;
+    JButton add, back;
 
     AddEmployee() {
         getContentPane().setBackground(new Color(163, 255, 188));
@@ -135,9 +136,33 @@ public class AddEmployee extends JFrame {
         tempid.setForeground(Color.RED);
         add(tempid);
 
+        add = new JButton("ADD");
+        add.setBounds(450, 550, 150, 40);
+        add.setBackground(Color.BLACK);
+        add.setForeground(Color.WHITE);
+        add.addActionListener(e -> handleAddAction());
+        add(add);
+
+        back = new JButton("BACK");
+        back.setBounds(250, 550, 150, 40);
+        back.setBackground(Color.BLACK);
+        back.setForeground(Color.WHITE);
+        back.addActionListener(e -> handleBackAction());
+        add(back);
+
         setSize(900, 700);
         setLocation(300, 50);
         setVisible(true);
+    }
+
+    private void handleAddAction() {
+        // Logic for adding an employee
+        System.out.println("Add button clicked");
+    }
+
+    private void handleBackAction() {
+        // Logic for going back
+        System.out.println("Back button clicked");
     }
 
     public static void main(String[] args) {
