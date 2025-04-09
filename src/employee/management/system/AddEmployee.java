@@ -2,10 +2,13 @@ package employee.management.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import com.toedter.calendar.JDateChooser;
+import java.text.SimpleDateFormat;
 import java.util.Random;
 
-public class AddEmployee extends JFrame  implements ActionListener {
+public class AddEmployee extends JFrame implements ActionListener {
+
     JTextField tname, tfname, taddress, tphone, taadhar, temail, tsalary, tdesignation;
     JDateChooser tdob;
     JComboBox<String> Boxeducation;
@@ -21,6 +24,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         heading.setFont(new Font("Serif", Font.BOLD, 25));
         add(heading);
 
+        // Name
         JLabel name = new JLabel("Name");
         name.setBounds(50, 150, 150, 30);
         name.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -31,6 +35,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         tname.setBackground(new Color(177, 252, 197));
         add(tname);
 
+        // Father's Name
         JLabel fname = new JLabel("Father's Name");
         fname.setBounds(400, 150, 150, 30);
         fname.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -41,6 +46,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         tfname.setBackground(new Color(177, 252, 197));
         add(tfname);
 
+        // DOB
         JLabel dob = new JLabel("Date Of Birth");
         dob.setBounds(50, 200, 150, 30);
         dob.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -51,6 +57,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         tdob.setBackground(new Color(177, 252, 197));
         add(tdob);
 
+        // Salary
         JLabel salary = new JLabel("Salary");
         salary.setBounds(400, 200, 150, 30);
         salary.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -61,6 +68,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         tsalary.setBackground(new Color(177, 252, 197));
         add(tsalary);
 
+        // Address
         JLabel address = new JLabel("Address");
         address.setBounds(50, 250, 150, 30);
         address.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -71,6 +79,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         taddress.setBackground(new Color(177, 252, 197));
         add(taddress);
 
+        // Phone
         JLabel phone = new JLabel("Phone");
         phone.setBounds(400, 250, 150, 30);
         phone.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -81,6 +90,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         tphone.setBackground(new Color(177, 252, 197));
         add(tphone);
 
+        // Email
         JLabel email = new JLabel("Email");
         email.setBounds(50, 300, 150, 30);
         email.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -91,6 +101,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         temail.setBackground(new Color(177, 252, 197));
         add(temail);
 
+        // Education
         JLabel education = new JLabel("Highest Education");
         education.setBounds(400, 300, 200, 30);
         education.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -102,6 +113,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         Boxeducation.setBackground(new Color(177, 252, 197));
         add(Boxeducation);
 
+        // Designation
         JLabel designation = new JLabel("Designation");
         designation.setBounds(50, 350, 150, 30);
         designation.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -112,6 +124,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         tdesignation.setBackground(new Color(177, 252, 197));
         add(tdesignation);
 
+        // Aadhar
         JLabel aadhar = new JLabel("Aadhar Number");
         aadhar.setBounds(400, 350, 150, 30);
         aadhar.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -122,6 +135,7 @@ public class AddEmployee extends JFrame  implements ActionListener {
         taadhar.setBackground(new Color(177, 252, 197));
         add(taadhar);
 
+        // Employee ID
         JLabel empid = new JLabel("Employee ID");
         empid.setBounds(50, 400, 150, 30);
         empid.setFont(new Font("SAN_SERIF", Font.BOLD, 20));
@@ -136,33 +150,25 @@ public class AddEmployee extends JFrame  implements ActionListener {
         tempid.setForeground(Color.RED);
         add(tempid);
 
+        // Buttons
         add = new JButton("ADD");
         add.setBounds(450, 550, 150, 40);
         add.setBackground(Color.BLACK);
         add.setForeground(Color.WHITE);
-        add.addActionListener(e -> handleAddAction());
+        add.addActionListener(this);
         add(add);
 
         back = new JButton("BACK");
         back.setBounds(250, 550, 150, 40);
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
-        back.addActionListener(e -> handleBackAction());
+        back.addActionListener(this);
         add(back);
 
+        // Frame
         setSize(900, 700);
         setLocation(300, 50);
         setVisible(true);
-    }
-
-    private void handleAddAction() {
-        // Logic for adding an employee
-        System.out.println("Add button clicked");
-    }
-
-    private void handleBackAction() {
-        // Logic for going back
-        System.out.println("Back button clicked");
     }
 
     @Override
@@ -170,7 +176,6 @@ public class AddEmployee extends JFrame  implements ActionListener {
         if (e.getSource() == add) {
             String name = tname.getText();
             String fname = tfname.getText();
-            String dob = ((JTextField) tdob.getDateEditor().getUiComponent()).getText();
             String salary = tsalary.getText();
             String address = taddress.getText();
             String phone = tphone.getText();
@@ -179,8 +184,24 @@ public class AddEmployee extends JFrame  implements ActionListener {
             String designation = tdesignation.getText();
             String aadhar = taadhar.getText();
             String empid = tempid.getText();
+
+            // Format DOB properly
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String dob = sdf.format(tdob.getDate());
+
+            try {
+                conn c = new conn();
+                String query = "INSERT INTO employee VALUES('" + empid + "','" + name + "','" + fname + "','" + dob + "','" + salary + "','" + address + "','" + phone + "','" + email + "','" + education + "','" + designation + "','" + aadhar + "')";
+                c.statement.executeUpdate(query);
+                JOptionPane.showMessageDialog(null, "Employee Added Successfully");
+                setVisible(false);
+                new Main_class();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         } else if (e.getSource() == back) {
-            handleBackAction();
+            setVisible(false);
+            new Main_class();
         }
     }
 
