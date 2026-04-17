@@ -105,5 +105,3 @@ Would you like me to:
 - Assist with packaging it into a `.jar` or `.exe`?
 
 Let me know and I got you, bro 💻🔥
-
-
