@@ -140,7 +140,7 @@ Contributions are welcome.
 - **GitHub:** https://github.com/tushardevx01
 - **Portfolio:** https://tushardevx01.tech
 - **LinkedIn:** https://www.linkedin.com/in/tushardevx01
-- **Instagram:** https://www.instagram.com/tushardevx01/
+- **Instagram:** https://www.instagram.com/tushardevx01
 - **Email:** t.k.d.dey2033929837@gmail.com
 
 ---
